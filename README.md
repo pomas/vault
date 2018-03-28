@@ -1,5 +1,7 @@
 # vault
 
+{tady bych este asi napsal neco o tom, co to je transakce, co to je account a mozna neco malicko o tom, co to je vault - me to doslo, ale sem postizenej touto problematikou:) }
+
 Service is responsible for account integrity, amount blockations and promises realisation of transaction when asked to. This service is part of eventual tenant appliance and is intended to deployed to isolated tenant namespace or on customer physical machine.
 
 [![godoc for jancajthaml-openbank/vault](https://godoc.org/github.com/nathany/looper?status.svg)](https://godoc.org/github.com/jancajthaml-openbank/vault) [![CircleCI](https://circleci.com/gh/jancajthaml-openbank/vault/tree/master.svg?style=shield)](https://circleci.com/gh/jancajthaml-openbank/vault/tree/master)
@@ -10,11 +12,13 @@ Service is responsible for account integrity, amount blockations and promises re
 
 **Protocol**
 
+{nasledujici vetu nedavam, nevim co je lake client a o jakejch zpravach mluvis}
 Communication with this component is done through lake client and no messages originates from this service, only atomic replies.
 
-*Component knows following commands*
 
-* Ask account about its current state
+*Component accepts following commands*
+
+* Ask account about its current state {je tohle stav nebo zustatek?}
 * Create account
 * Promise blockation of amount
 * Commit blockation of amount
@@ -24,7 +28,7 @@ Underlying transport protocol is ZMQ
 
 **Persistence**
 
-Journal and audit data are stored as files with fixed pattern on provided mounted volume, no dependency on database or need for data migration, every disk operation is done in constant asymptotic time with fixed operations. No performance degradation with account history or number of accounts. Number of data and speed speed linearly corelates with quality of disk raid.
+Journal and audit data are stored as files with fixed pattern on provided mounted volume, no dependency on database or need for data migration, every disk operation is done in constant asymptotic time with fixed operations. No performance degradation with account history or number of accounts. Number of data and speed linearly corelates with quality of disk raid.
 
 **Integrity**
 
@@ -34,7 +38,7 @@ Component contains multiple subroutines for realtime data integrity verification
 
 > Note: more specific performance tables will be provided
 
-Current setup running single instance 1x100Mhz CPU, 1x128Mbi RAM can process 100 transactions/s
+Current setup running single instance 1x100Mhz {100Mhz? nemelo bejt spis 1000Mhz?} CPU, 1x128Mbi RAM can process 100 transactions/s
 
 > Note: WIP k8s instances with targets (/s) `tiny` - 100, `small` - 1k, `medium` - 10k, `large` - 100k
 
